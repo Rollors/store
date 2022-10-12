@@ -20,6 +20,6 @@ public interface UserMapper {
      * @param username
      * @return 如果找到对应的用户则返回用户的数据，否则为null值
      */
-    User findByUsername(@Param("username") String username);
+    User findByUsername(String username);
 
 }
