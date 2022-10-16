@@ -37,4 +37,10 @@ public class UserServiceTests {
         }
     }
 
+    @Test
+    public void login(){
+        User user = iUserService.login("yep1","123456");
+        System.out.println(user);
+    }
+
 }

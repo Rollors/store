@@ -1,8 +1,6 @@
 package com.cy.store.controller;
 
-import com.cy.store.service.ex.InsertException;
-import com.cy.store.service.ex.ServiceException;
-import com.cy.store.service.ex.UsernameDuplicatedException;
+import com.cy.store.service.ex.*;
 import com.cy.store.util.JsonResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -22,6 +20,12 @@ public class BaseController {
         if (e instanceof UsernameDuplicatedException){
             result.setMessage("用户名被占用");
             result.setState(4000);
+        }else if (e instanceof UserNotFoundException){
+            result.setMessage("用户不存在");
+            result.setState(5001);
+        }else if (e instanceof PasswordNotMatchException){
+            result.setMessage("用户的密码错误");
+            result.setState(5002);
         }else if (e instanceof InsertException){
             result.setMessage("注册时产生未知异常");
             result.setState(5000);

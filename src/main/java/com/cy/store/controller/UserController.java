@@ -23,11 +23,29 @@ public class UserController extends BaseController {
 
     @RequestMapping("reg")
     //@ResponseBody //表示此方法的响应结果以json格式进行响应到前端
+    /**
+     * 1.接收数据方式：请求处理方法的参数列表设置为pojo类型来接收前端数据
+     *  springboot会将前端的url地址中的参数名和pojo类型的属性名进行比较，
+     *  如果这两个名称相同，则将值注入到pojol类型的对应属性上
+     */
     public JsonResult<Void> reg(User user){
 
         iUserService.reg(user);
         return new JsonResult<>(OK);
     }
+
+    /**
+     * 2.接收数据方式：请求处理方法的参数列表为非pojo类型
+     * springboot会直接将请求的参数名和方法的参数名直接进行比较，
+     * 如果名称相同则自动完成依赖注入
+     *
+     */
+    @RequestMapping("login")
+    public JsonResult<User> login(String username, String password){
+        User user = iUserService.login(username,password);;
+        return new JsonResult<User>(OK,user);
+    }
+
 //    @RequestMapping("reg")
 //    //@ResponseBody //表示此方法的响应结果以json格式进行响应到前端
 //    public JsonResult<Void> reg(User user){
