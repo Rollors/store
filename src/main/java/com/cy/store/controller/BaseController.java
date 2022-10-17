@@ -4,6 +4,8 @@ import com.cy.store.service.ex.*;
 import com.cy.store.util.JsonResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * 控制层基类
  */
@@ -32,4 +34,26 @@ public class BaseController {
         }
         return result;
     }
+
+    /**
+     * 获取session对象中的uid
+     * @param session session对象
+     * @return 当前登录用户的uid值
+     */
+    protected final Integer getUidFromSession(HttpSession session){
+        return Integer.valueOf(session.getAttribute("uid").toString());
+    }
+
+    /**
+     * 获取当前登录用户的username
+     * @param session session对象
+     * @return 当前登录用户的用户名
+     *
+     * 在实现类中重写了父类中的toString()，不是句柄信息的输出
+     */
+    protected final String getUsernameFromSession(HttpSession session){
+        return session.getAttribute("username").toString();
+    }
+
+
 }
