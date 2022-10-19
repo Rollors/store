@@ -43,4 +43,8 @@ public class UserServiceTests {
         System.out.println(user);
     }
 
+    @Test
+    public void changePassword(){
+        iUserService.changePassword(4,"yep1","123456","654321");
+    }
 }

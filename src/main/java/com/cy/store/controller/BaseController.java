@@ -31,6 +31,9 @@ public class BaseController {
         }else if (e instanceof InsertException){
             result.setMessage("注册时产生未知异常");
             result.setState(5000);
+        }else if (e instanceof UpadateException){
+            result.setMessage("更新时产生未知异常");
+            result.setState(5003);
         }
         return result;
     }
