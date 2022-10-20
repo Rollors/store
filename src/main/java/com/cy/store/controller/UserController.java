@@ -66,6 +66,21 @@ public class UserController extends BaseController {
         iUserService.changePassword(uid, username, oldPassword, newPassword);
         return new JsonResult<>(OK);
     }
+
+    @RequestMapping("get_by_uid")
+    public JsonResult<User> getByUid(HttpSession session){
+        User user = iUserService.getByUid(getUidFromSession(session));
+        return new JsonResult<User>(OK,user);
+    }
+
+    @RequestMapping("change_info")
+    public JsonResult<Void> changeInfoByUid(HttpSession session,User user){
+        // user对象有四部分数据：username、phone、email、gender
+        Integer uid = getUidFromSession(session);
+        String username = getUsernameFromSession(session);
+        iUserService.changeUserInfo(uid,username,user);
+        return new JsonResult<>(OK);
+    }
 //    @RequestMapping("reg")
 //    //@ResponseBody //表示此方法的响应结果以json格式进行响应到前端
 //    public JsonResult<Void> reg(User user){

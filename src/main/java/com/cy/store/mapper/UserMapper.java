@@ -38,6 +38,12 @@ public interface UserMapper {
                                 @Param("modifiedTime") Date modifiedTime);
 
     /**
+     * 更新用户数据
+     * @param user
+     * @return
+     */
+    Integer updateInfoByUid(User user);
+    /**
      * 根据用户id查询用户的数据
      * @param uid
      * @return

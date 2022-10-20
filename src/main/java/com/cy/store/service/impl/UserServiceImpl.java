@@ -113,6 +113,43 @@ public class UserServiceImpl implements IUserService {
         }
     }
 
+    @Override
+    public User getByUid(Integer uid) {
+        User user = userMapper.findByUid(uid);
+        if (user==null || user.getIsDelete()==1){
+            throw new UserNotFoundException("用户不存在");
+        }
+        User result = new User();
+        result.setUsername(user.getUsername());
+        result.setPhone(user.getPhone());
+        result.setEmail(user.getEmail());
+        result.setGender(user.getGender());
+        return  result;
+    }
+
+    /**
+     *
+     * @param uid
+     * @param username
+     * @param user phone/email/gender,收到将uid/username封装到user中
+     */
+    @Override
+    public void changeUserInfo(Integer uid, String username, User user) {
+        User result = userMapper.findByUid(uid);
+        if (result==null || result.getIsDelete()==1){
+            throw new UserNotFoundException("用户不存在");
+        }
+        user.setUid(uid);
+//        user.setUsername(username);
+        user.setModifiedUser(username);
+        user.setModifiedTime(new Date());
+
+        Integer rows = userMapper.updateInfoByUid(user);
+        if (rows!=1){
+            throw new UpadateException("更新时产生未知异常");
+        }
+    }
+
     /**
      * 定义MD5算法加密处理
      */

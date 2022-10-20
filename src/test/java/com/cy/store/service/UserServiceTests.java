@@ -47,4 +47,19 @@ public class UserServiceTests {
     public void changePassword(){
         iUserService.changePassword(4,"yep1","123456","654321");
     }
+
+    @Test public void getByUid(){
+        System.out.println(iUserService.getByUid(4));
+    }
+
+    @Test
+    public void changeInfo(){
+        Integer uid =4;
+        String username = "yep1";
+        User user = new User();
+        user.setPhone("18279202702");
+        user.setEmail("25467431@qq.com");
+        user.setGender(0);
+        iUserService.changeUserInfo(uid,username,user);
+    }
 }
