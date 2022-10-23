@@ -40,8 +40,16 @@ public interface IUserService {
     /**
      * 更新用户数据
      * @param uid
+     * @param avatar
      * @param username
-     * @param user
      */
-    void changeUserInfo(Integer uid , String username, User user);
+    void changeUserInfo(Integer uid , String avatar, User username);
+
+    /**
+     *
+     * @param uid
+     * @param avatar
+     * @param username
+     */
+    void changeAvatar(Integer uid, String avatar, String username);
 }

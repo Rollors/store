@@ -50,4 +50,9 @@ public interface UserMapper {
      */
     User findByUid(@Param("uid") Integer uid);
 
+    Integer updateAvatarByUid(@Param("uid") Integer uid,
+                              @Param("avatar") String avatar,
+                              @Param("modifiedUser") String modifiedUser,
+                              @Param("modifiedTime") Date modifiedTime);
+
 }

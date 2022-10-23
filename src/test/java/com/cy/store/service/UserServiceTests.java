@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
+
 // @SpringBootTest；表示标注当前类是测试类，不会随同项目打包发送
 @SpringBootTest
 // @RunWith：表示启动单元测试类(不写的话不能运行)，需要传递一个参数，
@@ -62,4 +64,10 @@ public class UserServiceTests {
         user.setGender(0);
         iUserService.changeUserInfo(uid,username,user);
     }
+
+    @Test
+    public void changeAvatar(){
+        iUserService.changeAvatar(4,"/upload/test.png","ldm");
+    }
+
 }
