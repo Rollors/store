@@ -25,14 +25,17 @@ public class BaseController {
             result.setState(4000);
         }else if (e instanceof UserNotFoundException){
             result.setMessage("用户不存在");
-            result.setState(5001);
+            result.setState(4001);
         }else if (e instanceof PasswordNotMatchException){
             result.setMessage("用户的密码错误");
-            result.setState(5002);
+            result.setState(4002);
+        }else if (e instanceof AddressCountLimitException){
+            result.setMessage("用户收货地址超出上限");
+            result.setState(4003);
         }else if (e instanceof InsertException){
             result.setMessage("注册时产生未知异常");
             result.setState(5000);
-        }else if (e instanceof UpadateException){
+        } else if (e instanceof UpadateException){
             result.setMessage("更新时产生未知异常");
             result.setState(5003);
         }  else if (e instanceof FileEmptyException) {

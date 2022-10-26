@@ -39,7 +39,6 @@ public class UserController extends BaseController {
      *  如果这两个名称相同，则将值注入到pojol类型的对应属性上
      */
     public JsonResult<Void> reg(User user){
-
         iUserService.reg(user);
         return new JsonResult<>(OK);
     }
